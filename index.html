@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chatbots</title>
+</head>
+<style>
+    .chatbot-container{
+        display: grid;
+        place-content: center;
+        width: 100vw;
+        height: 100vh;
+        background-color: aqua;
+        overflow: hidden;
+    }
+    .chatbot-message{
+        background-color: white;
+        color: black;
+        width: 60%;
+        height: 30vh;
+        margin: auto;
+        padding: 50px;
+        position: relative;
+    }
+    h1{
+        text-align: center;
+        font-size: 20px;
+        color: blue;
+        margin: -30px auto;
+        padding: 10px;
+    }
+    .input-block{
+       background-color: grey;
+       width: 100%;
+       height: auto;
+       margin: auto -50px;
+       position: relative;
+       bottom: -95%;
+       padding: 10px 50px;
+
+    
+    }
+    @media screen and (max-width: 540px) {
+    .input-block{
+        background-color: grey;
+        width: auto;
+        
+    }
+    }
+    #textbox{
+        padding: 10px;
+        width: 50%;
+        margin: auto 20%;
+        text-align: start;
+        font-size: 18px;
+        background-color: coral;
+        color: rebeccapurple;
+        border: none;
+        outline: none;
+    }
+    #chatbottext{
+        margin-top: 30px;
+        width: auto;
+        height: auto;
+        word-wrap: break-word;
+        line-height: 1.5;
+        font-size: 18px;
+    }
+</style>
+<body>
+    <div class="chatbot-container">
+        <div class="chatbot-message">
+            <h1 id="message">Lets Talk</h1>
+            <p id="chatbottext"></p>
+            <div class="input-block">
+                 <input type="text" id="textbox" autocomplete="on" autofocus="true" placeholder="Enter your text...">
+            </div >
+        </div>
+    </div>
+    <script>
+            
+         var textbox = document.getElementById("textbox");
+         var bot_texts = document.getElementById("chatbottext");
+         var time = new Date().toLocaleString({}, {hour:"2-digit",minute:"2-digit"});
+         
+         textbox.addEventListener("keydown", (e)=>{  
+            if(e.code == "Enter"){
+           bot_texts.innerHTML = ` ${textbox.value}<br>${ time}` + "<br>";
+           bot_texts.style.color = "crimson";
+            bot_texts.style.float = "right";
+           let input = textbox.value;
+           textbox.value = ""; 
+            setTimeout(() => {
+                if(input in bot$Me){
+                bot_texts.innerHTML = ` ${bot$Me[input]}<br>${ time}` + "<br>";
+                bot_texts.style.float = "left";
+                bot_texts.style.color = "green";
+                bot_texts.scrollIntoView({behavior:"auto"});
+                
+            }
+        
+            else{
+                bot_texts.innerHTML = `please try asking something else ${time}`; 
+                bot_texts.style.float = "left";
+                bot_texts.style.color = "green";
+                bot_texts.scrollIntoView({behavior:"auto"});
+                
+            }         
+            }, 3500);
+               
+        }  
+        
+    });
+           
+
+         var bot$Me = {
+                "hello":"hi, welcome to my world!",
+                "yeah":"how may i help?",
+                "hey":"hello!",
+                "you there?": "yep",
+                "see you later": "great! bye",
+                "how old are you?": "i'm ageless!",
+                "are you wise?": "i'm not solomon! but ask your question",
+                "bye":"see you next time",
+                "hi": "hey buddy!",
+                "idiot!":"what!",
+                "ok":"good",
+                "can you help me?": "sure, i will!",
+                "why?":"i'm working with time",
+                "great!": "yeah!",
+                "thank you!":"you are welcome!",
+                "who are you?":"i'm your assistant",
+                "tell me about you": "i'm mr. chatbot!",
+                "who created you?": "Funny question!",
+                "can you add 2 plus 3?": "sure!",
+                "what is 2+10?": "12!",
+                "gotta go":"ok, bye!",
+                "bye":"yeah, nice talking to you!",
+                "how are you?":"fine and you?",
+                "i have a problem":"i can help",
+                "what is your name?":"i am infinite",
+                "": "i don't understand!",
+                "who is raymond?":"he is a full stack dev!",
+                "do you know him?":"pretty well",
+                "where did he learn web development?":"check out his portfolio",
+                "how old is ogaraga":"Raymond is great",
+                "is he employed?":"check his profile",
+                "where did he graduate from?":"mouau",
+                "who is the founder of google?":"page larry",
+                "who created javascript?":"Brendan Eich",
+                "what's that?":"never mind",
+                "good!":"Thanks!",
+                "good":"thank you!",
+                "talk to you later":"ok, bye",
+                "bye":"enjoy yourself buddy!",
+                "can i ask you a question?": "please do",
+                "tell me about football": "soccer started in 1936 or thereabout in greece",
+                "who is the best player in the world?": "he is late!",
+                "what is his name?": "who?",
+                "the best player in the world": "i already told you!",
+                "where are you from?": "i'm always around in the cloud",
+                "how can i learn coding?":"it is simple! just contact:port-ogaraga.vercel.app/home.html!",
+                "cost of learning programming?":"it depends on your desire and scope of what you want",
+            }; 
+    
+    
+    </script>
+</body>
+</html>
