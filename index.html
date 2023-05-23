@@ -4,83 +4,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
     <title>chatbots</title>
 </head>
-<style>
-    .chatbot-container{
-        display: grid;
-        place-content: center;
-        width: 100vw;
-        height: 100vh;
-        background-color: aqua;
-        overflow: hidden;
-    }
-    .chatbot-message{
-        background-color: white;
-        color: black;
-        width: 60%;
-        height: 30vh;
-        margin: auto;
-        padding: 50px;
-        position: relative;
-    }
-    h1{
-        text-align: center;
-        font-size: 20px;
-        color: blue;
-        margin: -30px auto;
-        padding: 10px;
-    }
-    .input-block{
-       background-color: grey;
-       width: 100%;
-       height: auto;
-       margin: auto -50px;
-       position: relative;
-       bottom: -95%;
-       padding: 10px 50px;
-
-    
-    }
-    @media screen and (max-width: 540px) {
-    .input-block{
-        background-color: grey;
-        width: auto;
-        
-    }
-    }
-    #textbox{
-        padding: 10px;
-        width: 50%;
-        margin: auto 20%;
-        text-align: start;
-        font-size: 18px;
-        background-color: coral;
-        color: rebeccapurple;
-        border: none;
-        outline: none;
-    }
-    #chatbottext{
-        margin-top: 30px;
-        width: auto;
-        height: auto;
-        word-wrap: break-word;
-        line-height: 1.5;
-        font-size: 18px;
-    }
-</style>
 <body>
-    <div class="chatbot-container">
+    <h2 id="lets_chat">Click on me<i class="fa-brands fa-rocketchat"></i></h2>
+    <div class="chatbot-container" id="chatbox">
         <div class="chatbot-message">
-            <h1 id="message">Lets Talk</h1>
+            <p id="p">Hey! I'm your virtual asistant: <em style="color:green">I'm listening..</em></p>
             <p id="chatbottext"></p>
             <div class="input-block">
                  <input type="text" id="textbox" autocomplete="on" autofocus="true" placeholder="Enter your text...">
-            </div >
+                 <button type="button" id="end">EndChat</button>
+                </div >
         </div>
     </div>
     <script>
+           var botChats = document.getElementById("chatbottext");
+           let clickOnMe = document.getElementById("lets_chat");
+           let endChat = document.getElementById("end");
+           let chatBox = document.getElementById("chatbox");
+           clickOnMe.onclick = ()=>{
+            if(chatBox.style.display == "none"){
+                chatBox.style.display = "block";
+                clickOnMe.style.display = "none";
+            }
+            else{
+                clickOnMe.style.display = "block";
+                chatBox.style.display = "none";
+         
+            }
+           };
+           endChat.onclick = ()=>{
+            if(chatBox.style.display == "block"){
+                chatBox.style.display = "none";
+                clickOnMe.style.display = "block";
+                botChats.innerHTML = "";
+            }
+            else{
+                chatBox.style.display = "block";
+                clickOnMe.style.display = "none";
             
+            }
+           }
+           
+
          var textbox = document.getElementById("textbox");
          var bot_texts = document.getElementById("chatbottext");
          var time = new Date().toLocaleString({}, {hour:"2-digit",minute:"2-digit"});
@@ -137,11 +106,24 @@
                 "can you add 2 plus 3?": "sure!",
                 "what is 2+10?": "12!",
                 "gotta go":"ok, bye!",
+                "who is the president of USA?":"As @ May 20th 2023, it was Joe Biden: maybe he is now",
+                "who is the president of usa":"As @ May 20th 2023, it was Joe Biden: maybe he is now",
+                "who is the president of America?":"As @ May 20th 2023, it was Joe Biden: maybe he is now",
+                "who is the president of america":"As @ May 20th 2023, it was Joe Biden: maybe he is now",
+                "are you married?":"Talk to me seriously",
+                "what are you doing now?":"im with you",
+                "what's going on?":"nothing buddy",
+                "whats happening?":"nothing buddy",
+                "whats going on?":"nothing buddy",
+                "what's up?":"nothing buddy",
+                "whats going on?":"nothing yeah",
+                "whats your name?": "i'm infinite",
+                "what's your name?":"i'm infinite",
                 "bye":"yeah, nice talking to you!",
                 "how are you?":"fine and you?",
                 "i have a problem":"i can help",
-                "what is your name?":"i am infinite",
-                "": "i don't understand!",
+                "what is your name?":"i'm infinite",
+                "": "i don't understand!, type in something",
                 "who is raymond?":"he is a full stack dev!",
                 "do you know him?":"pretty well",
                 "where did he learn web development?":"check out his portfolio",
